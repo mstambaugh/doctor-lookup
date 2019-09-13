@@ -10,7 +10,7 @@ $(document).ready(function() {
   $('#docSearchBtn').click(function() {
     const ailment = $('#ailmentInput').val();
 
-    console.log(searchWord);
+    console.log(ailment);
 
 
     let docResults = new Doctors();
@@ -18,8 +18,8 @@ $(document).ready(function() {
 
     promise1.then(function(response) {
       const body = JSON.parse(response);
-      body.forEach(function(wordObj){
-        $('#result').append(`<p>${searchWord} means ${wordObj.shortdef}</p>`);
+      body.forEach(function(doctor){
+        $('#doctorResults').append(`<p>You can see any of these ${ailment} means ${body[0].doctor}</p>`);
       });
 
     }, function(error) {
