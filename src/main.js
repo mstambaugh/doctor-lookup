@@ -19,7 +19,7 @@ $(document).ready(function() {
     promise1.then(function(response) {
       const body = JSON.parse(response);
       body.forEach(function(doctor){
-        $('#doctorResults').append(`<p>You can see any of these ${ailment} means ${body[0].doctor}</p>`);
+        $('#doctorResults').append(`<p>You can see any of these  ${body[0].doctors}</p>`);
       });
 
     }, function(error) {
