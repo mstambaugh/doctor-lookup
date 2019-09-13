@@ -14,15 +14,16 @@ $(document).ready(function() {
 
 
     let docResults = new Doctors();
-    let promise1 = docResults.getDoctorbyAilment( );
+    let promise1 = docResults.getDoctorbyAilment(ailment);
 
     promise1.then(function(response) {
       const body = JSON.parse(response);
-      body.forEach(function(doctor){
+      console.log(body);
+
         $('#doctorResults').append(`<p>You can see any of these  ${body[0].doctors}</p>`);
       });
 
-    }, function(error) {
+     function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
 
