@@ -20,12 +20,12 @@ $(document).ready(function() {
       const body = JSON.parse(response);
       console.log(body);
 
-        $('#doctorResults').append(`<p>You can see any of these  ${body[0].doctors}</p>`);
+        $('#doctorResults').append(`<p>You can see any of these  ${body[0]}</p>`);
       });
 
-     function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-    });
+    //  function(error) {
+    //   $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    // };
 
 
     // const thesWord = $('#word').val();

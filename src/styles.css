@@ -1,0 +1,11 @@
+.body {
+  font-family: courier;
+}
+.card {
+  background-color: blue;
+  color: white;
+}
+button {
+  background-color: red;
+  color: white;
+}
