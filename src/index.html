@@ -7,15 +7,19 @@
   <div class="container">
 
 
-    <form class="dictionary" action="index.html" method="post">
-      <div class="card card-dark">
-
+    <form class="doctorLooker" action="index.html" method="post">
+      <div class="card">
+        <label> Are you looking for a specfic doctor?</label>
+        <input id="docNameInput" type="text">
+      </div>
+      <div class="card">
         <label>What is your primary symptom?</label>
-
-        <input id="ailmentInput" type="text" name="" value="">
+        <input id="illnessInput" type="text">
         <button type="button" id="docSearchBtn" name="button">Find a Doctor</button>
       </div>
-      <div id="doctorResults">
+      <div class="card">
+        <div id="doctorResults">
+        </div>
       </div>
     </form>
   </div>
