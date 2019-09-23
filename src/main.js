@@ -7,26 +7,24 @@ import { Doctors } from './../src/doctor-lookup.js';
 
 $(document).ready(function() {
   $('#docSearchBtn').click(function() {
-    const illness = $('#illnessInput').val();
     const docName = $('#docNameInput').val();
-    console.log(docName);
+    const illness = $('#illnessInput').val();
+
 
 
     let docResults = new Doctors();
-    let promise1 = docResults.getDoctorbyAilment(docName, illness);
+    let promise1 = docResults.getDoctorsbyIllness(docName, illness);
 
     promise1.then(function(response) {
       const body = JSON.parse(response);
-        for (let i=0; i<body.data.length; i++)
-        $('#doctorResults').append(`<p>Here are some recommended doctors in your area<br>${body.data[0].profile.first_name} ${body.data[0].profile.last_name}<br> ${body.data[0].practices[0].phones[0].number}<br>${body.data[0].practices[0].visit_address.street} ${body.data[0].practices[0].visit_address.city} ${body.data[0].practices[0].visit_address.state} ${body.data[0].practices[0].visit_address.zip}<br> ${body.data[0].practices[0].website}<br></p>`);
+      if (body.meta.count>0) {
+        body.data.forEach (function(doctor) {
+          $('#doctorResults').append(`<p>Here are some recommended doctors in your area<br>${doctor.profile.first_name} ${doctor.profile.last_name}<br> ${doctor.practices[0].phones[0].number}<br>${doctor.practices[0].visit_address.street} ${doctor.practices[0].visit_address.city} ${doctor.practices[0].visit_address.state} ${doctor.practices[0].visit_address.zip}<br> ${doctor.practices[0].website}<br></p>`)
+        }
+      } else {
+        $('#doctorResults').append(`<p> We couldn't find any doctors matching your search. Please try again with different search parameters</p>`);
+      }
 
-      });
-
-
-    //  function(error) {
-    //   $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-    // };
-
-
+    });
   });
 });
